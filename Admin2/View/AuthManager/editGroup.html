@@ -1,0 +1,19 @@
+<style>
+	.add_group{
+		margin: 20px ;
+	}
+</style>
+
+<div class="add_group">
+
+<form action="__URL__/editGroupHandle/" method="post">
+分组名称 &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="title" value="<?php echo $record['title']; ?>"><br>
+是否启用分组<input type="checkbox" name="status" id="" value="1" "<?php 
+if ($record['status']==1) {
+ 	echo " checked='checked ' ";
+ }  ?>">
+ <input type="hidden" name="id" value="<?php echo $record['id']; ?>">
+ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="确认修改">
+</form>
+</div>
+

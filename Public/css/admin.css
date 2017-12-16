@@ -1,0 +1,161 @@
+*{margin: 0;padding: 0}
+body{font-size: 12px;font-family: "宋体","微软雅黑";}
+ul,li{list-style: none;}
+a:link,a:visited{text-decoration: none;}
+/*左侧折叠菜单样式*/
+.list{width: 100%;/*border-bottom:solid 1px #316a91;margin:0 0;*/}
+.list ul li{background-color:#467ca2; border:solid 1px #316a91; border-bottom:0;}
+.list ul li a{padding-left: 10px;color: #fff; font-size:12px; display: block; font-weight:bold; height:36px;line-height: 36px;position: relative;
+}
+.list ul li .inactive{ background:url(../../public/images/off.png) no-repeat 184px center;}
+.list ul li .inactives{background:url(../../public/images/on.png) no-repeat 184px center;} 
+.list ul li ul{display: none;}
+.list ul li ul li { border-left:0; border-right:0; background-color:#6196bb; border-color:#467ca2;}
+.list ul li ul li ul{display: none;}
+.list ul li ul li a{ padding-left:20px;}
+.list ul li ul li ul li { background-color:#d6e6f1; border-color:#6196bb; }
+.last{ background-color:#d6e6f1; border-color:#6196bb; }
+.list ul li ul li ul li a{ color:#316a91; padding-left:30px;}
+ .list ul li ul li a:hover{
+	background: #F1F7E1;
+	color: #3B3B3B;
+}
+
+/*左侧菜单结束*/
+
+/*主体框架*/
+
+.top{
+	width: 100%;
+	height: 50px;
+	background: #6EB5F7;
+}
+.houtai{
+	font-weight:bold;
+	font-size: 15px;
+	padding: 12px;
+	margin-left: 40px;
+	color: #FFFFFF;
+}
+
+.houtai p a {
+	color: #FFFFFF;
+}
+/*内容*/
+
+.left{
+	float: left;
+	overflow: hidden;
+	width: 15%;
+	height: 700px;
+	border-right: 1px solid #C6E1E4;
+	/*background: #EAE7E7;*/
+}
+/*右侧内容*/
+.right{
+	float: right;
+	overflow: hidden;
+	min-height: 700px;
+	width: 85%;
+	background: #F6F5F5;
+}
+
+.clear{
+	clear: both;
+}
+/*footer*/
+.footer{
+	position: relative;
+	clear: both;
+	margin-top: 70px;
+	width: 100%;
+	height: 30px;
+	background: #E0E3E4;
+	color: #757574;
+	font-weight: bold;
+	padding: 5px;
+	text-align: center;	
+}
+
+/*右侧内容/按钮公共部分*/
+.cat_list{
+		width: 100%;
+	}
+.cat_list ul{
+	margin: 20px 0 0 20px;
+	}
+.cat_list ul li{
+	float: left;
+	margin-right: 10px;
+}
+
+/*文章*/
+.article{
+	margin-left: 100px;
+	width: 700px;
+	min-height: 700px;
+}
+
+/*分类添加表单*/
+  .cat_form{
+    width:84%;
+    margin-left: 40px;
+  }
+  .submit{
+    margin-left: 70px;
+  }
+  /*文章列表分页*/
+  	.current,.num{
+  		font-size: 15px;
+		margin: 1px;
+		padding: 10px 12px;
+		background: #287CF7;
+		color:#FFFFFF;
+	}
+	.current{
+		background: #AFC5B4;
+		color: #FCF9F9;
+		font-weight: bold;
+	}
+	.num:hover{
+		background: #51EA7C;
+		color: #070707;
+		font-weight: bold;
+	}
+
+	.prev,.next{
+		font-size: 15px;
+		padding: 10px 12px;
+		/*background: #51EA7C;*/
+		color: #070707;
+	}
+	.prev:hover,.next:hover{
+		background: #669DEE;
+		color: #070707;
+	};
+
+	/*数据导入导出*/
+	 .ext{
+        margin-left: 400px;
+    }
+    .table2{
+        text-align: center;
+        border-collapse: collapse;
+        border:1px solid gray;
+    }
+     .table2 tr{
+        border-collapse: collapse;
+        border:1px solid gray;
+    }
+     .table2 tr:hover{
+        background: #9AD6EA;
+        font-weight: bold;
+        
+    }
+     .table2 th{
+     	text-align: center;
+        border-collapse: collapse;
+        border:1px solid gray;
+    }
+
+    /**/

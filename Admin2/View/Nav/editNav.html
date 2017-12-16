@@ -1,0 +1,13 @@
+<style>
+	.editnav{
+		margin: 30px;
+	}
+</style>
+<div class="editnav"><form action="__URL__/editHandle/" method="post">
+	导航名称 <input type="text" name="name" value="<{$result['0']['name']}>"><br><br>
+	导航 URL <input type="text" name="url" value="<{$result['0']['url']}>"><br><br>
+		导航排序 <input type="text" name="sort" value="<{$result['0']['sort']}>"><br><br>
+	 <input type="hidden" name="id" value="<{$result['0']['nid']}>">
+	<input type="submit" value="保存编辑"> 
+</form>
+</div>

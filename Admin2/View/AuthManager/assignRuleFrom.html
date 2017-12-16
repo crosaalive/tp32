@@ -1,0 +1,37 @@
+
+<style>
+  .rulelist{
+     margin: 40px;
+  }
+</style>
+ <div class="rulelist">
+   <form action="__URL__/assignRuleHandle" method="post">
+     <table class="table2">
+       <thead>
+         <tr>
+           <th width="48">请选择</th>
+           <th width="120">规则标识</th>
+           <th width="120">规则描述</th>
+           <th width="160">规则是否启用</th>
+         </tr>
+       </thead>
+       <tbody>
+         <foreach name="list" item="v">
+           <tr>
+             <td>
+               <input type="checkbox"  <?php echo(in_array($v['id'],$rule)?"checked=\"checked\"":""); ?> name="rules[]" value="<{$v['id']}>" ></td>
+             <td>
+               <{$v['name']}></td>
+               <td>
+                 <{$v['title']}></td>
+                 <td>
+                   <{$v['status']?"是":"否"}></td>
+                 </tr>
+               </foreach>
+             </tbody>
+           </table>
+           <input type="hidden" name="group_id" value="<{$id}>">
+           <br><a href="__URL__/index"><<返回分组列表</a>
+           <input type="submit" value="提交权限修改" style="margin-left:60px;">
+         </form>
+       </div>

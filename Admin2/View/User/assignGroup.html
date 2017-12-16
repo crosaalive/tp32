@@ -1,0 +1,22 @@
+<style>
+	.user{
+		margin: 30px;
+	}
+</style>
+<div class="user">
+<form action="__URL__/assignGroupHandle/" method="post">
+<span>用户组 </span><select name="group" id="">
+    <option value="">...请选择用户组...</option>
+	<foreach  name="list"  item="v" >
+	<option value="<{$v['id']}>"><{$v['title']}> </option>
+	</foreach>
+</select><br><br>
+用户名 <input type="hidden" name="uid" value="<{$uid}>">
+<select name="" id="" >
+	<option value= "" ><?php echo $name; ?></option>
+</select>
+<br><br>
+<input type="submit" value="更改用户组">
+</form>
+
+</div>

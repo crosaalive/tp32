@@ -1,0 +1,36 @@
+<style>
+  .cat_form{
+    width:84%;
+    margin-left: 40px;
+  }
+</style>
+
+<br><br><br>
+<div class="cat_form">
+<form action="<{:U('Admin/Category/formHandle')}>" method="post" onsubmit="return check(this)">
+  所属分类
+  <select name="parent_id" id="">
+    <option value="">......请选择......</option>
+    <foreach name="list" item="v" >
+      <if condition="$data['cid'] neq $v['cid'] ">
+        <option value="<{$v['cid']}>"<if condition="$data['parent_id'] eq $v['cid']"> selected="selected" </if>>
+          <{$v['cat_name']}></option>
+        </if>
+      </foreach>
+    </select>
+    <br>
+    <br>
+    分类名称
+    <input type="text" name="cat_name" id="name" value="<{$data['cat_name']}>
+    ">   [中文_字母_数字 等...]
+    <br>
+    <br>
+    分类排序
+    <input type="text" name="sort" id="" value="<{$data['sort']}>
+    ">  [0-999]
+    <br>
+    <br>
+    <input type="hidden" name="sid" value="<{$data['cid']}>
+    ">
+    <input type="submit" class="submit" value="确认修改"></form>
+  </div>

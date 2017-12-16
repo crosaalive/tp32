@@ -1,0 +1,13 @@
+<style>
+	.ediLink{
+		margin: 30px;
+	}
+</style>
+<div class="ediLink"><form action="__URL__/editHandle/" method="post">
+	链接  <input type="text" name="url" value="<{$list['url']}>"><br><br>
+	排序 <input type="text" name="sort" value="<{$list['sort']}>"><br><br>
+	 <textarea name="desc" id="" cols="30" rows="10"><{$list['desc']}></textarea><br><br>
+	 <input type="hidden" name="id" value="<{$list['id']}>">
+	<input type="submit" value="提交编辑"> 
+</form>
+</div>

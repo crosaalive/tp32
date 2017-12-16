@@ -1,0 +1,44 @@
+<!-- <div style="margin:30px;">
+<form action="__URL__/uploadHandle" enctype="multipart/form-data" method="post" >
+<input type="text" name="name" /><br>
+<input type="file" name="photo" /><br>
+<input type="submit" value="提交" >
+</form>
+</div>
+ -->
+<!-- echo json_encode('file_infor'=>'上传失败'); -->
+
+<script type="text/javascript">
+ function ajaxFileUpload(){
+	$.ajax({
+		url:'__URL__/uploadHandle', //处理上传文件的服务端
+		secureuri:false,
+		fileElementId:'img',
+		dataType: 'json',
+ 		success: function (data){
+			alert(data);
+		}
+ 	})
+  return false;
+} 
+</script>
+  <input id="img" type="file" size="45" name="photo" class="input">
+  <button class="button" id="buttonUpload" onclick="ajaxFileUpload();">上传文件</button>
+
+  
+
+<!-- Array
+(
+    [photo] => Array
+        (
+            [name] => 12220248-3137513499af469b94a923378d6f3021.jpg
+            [type] => image/jpeg
+            [size] => 207591
+            [key] => photo
+            [ext] => jpg
+            [md5] => f000eb9f64e7c7367dd555a79ab4b1d1
+            [sha1] => 9af2248023f2176b68e466fa57e881d12321189a
+            [savename] => 5777941e4a7db.jpg
+            [savepath] => 20160702/
+        )
+) -->

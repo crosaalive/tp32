@@ -1,0 +1,14 @@
+<style>
+	.ruleform{
+		margin: 40px;
+	}
+</style>
+<div class="ruleform">
+	<form action="__URL__/addRuleHandle" method="post">
+		规则唯一标识 <input type="text" name="name" value="Admin/Category/">[示例 Admin/Index/index]<br><br>
+		中文名称 :&nbsp; <input type="text" name="title" value="添加文章">[示例 后台首页	]<br><br>
+		<!-- 规则类型 :&nbsp; <input type="text" name="type" value="admin">[所属模块 :示例 admin]<br><br> -->
+		是否有效 : &nbsp;<input type="checkbox" name="status" value="1" checked="checked">[默认有效]<br><br>
+		<a href="__URL__/rule/"><<<返回</a> <input type="submit" value="确认添加" style="margin-left:40px;">
+	</form>
+</div>

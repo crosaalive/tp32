@@ -1,0 +1,26 @@
+
+
+<br><br><br>
+<div class="article">
+	<form action="<{:U('Admin/Article/addHandle')}>" enctype="multipart/form-data" method="post">
+		文章标题
+		<input type="text" style="width:597px;" name="title" value="">	
+		<br>	
+		<br>	
+		所属分类
+		<select name="cat_id" id="cat_id">
+			<option value="">......请选择......</option>
+			<foreach name="list" item="v" >
+				<option value="<{$v['cid']}>"><{$v['cat_name']}></option>
+			</foreach>
+		</select>
+		&nbsp;&nbsp;是否在前台页面显示<input name="is_show" type="checkbox" value="1" checked="checked" /><br><br>
+		<p>文章缩略图 : 　<input type="file" name="photo" />[ 仅支持'jpg', 'gif', 'png', 'jpeg'格式] </p>
+		<input type="hidden" name="cat_name" id="cat_name" value="">
+		<br>	
+		<br>
+			<textarea id="editor_id" name="content" style="width:600px;height:400px;">
+			</textarea><br>	
+			<input type="submit" value="发布文章">
+			</form>
+</div>

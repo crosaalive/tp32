@@ -1,0 +1,44 @@
+<style>
+/*缩略图图片宽高*/
+  p img{
+    width:60px;
+    height:60px;
+    overflow:hidden;
+  }
+</style>
+<br><br>
+<div class="article">
+	<form action="<{:U('Admin/Article/editHandle')}>" enctype="multipart/form-data" method="post">文章标题<input type="text" style="width:597px;" name="title" value="<?php echo ($content['title']); ?>">
+		<br>	
+		<br>	
+		所属分类
+		<select name="cat_id" id="cat_id">
+			<option value="">......请选择......</option>
+			<foreach name="list" item="v" >
+				<option value="<{$v['cid']}>"
+				<if condition="$v['cid'] eq $content['cat_id']">selected="selected"</if>>
+					<{$v['cat_name']}></option>
+				</foreach>
+			</select>
+			&nbsp;&nbsp;是否在前台页面显示
+			<input name="is_show" type="checkbox" value="1" <if condition="$content['is_show'] eq 1 "> checked="checked" </if> /><br><br>
+			<p>文章缩略图 :　<input type="file" name="photo" /><img src="__PUBLIC__/thumb/<?php echo $content['thumb']; ?>" alt=""> </p>
+			<br>	
+			<br>	
+			<textarea id="editor_id" name="content" style="width:600px;height:400px;">
+				<if condition="$content['id'] gt 0 ">
+					<?php echo htmlspecialchars_decode($content['content']); ?>	
+					<else />	
+					&lt;strong&gt; 文章内容&lt;/strong&gt;
+				</if>
+			</textarea>
+			<br>
+			<!-- 原整合编辑和添加同一表单 -->
+			<if condition="$content['id'] gt 0 ">
+				<input type="hidden" name="edit" value="1">
+				<input type="hidden" name="id" value="<?php echo $content['id']; ?>">		
+				<input type="submit" value="提交修改">	
+				<else />	
+				<input type="submit" value="发布文章"></if>
+		</form>
+</div>

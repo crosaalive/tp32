@@ -1,0 +1,21 @@
+
+<br><br><br>
+<div class="cat_form">
+<form action="<{:U('Admin/Category/formHandle')}>" method="post" onsubmit="return check(this)">
+  所属分类 <select name="parent_id" id="">
+    <option value="">......请选择......</option>   
+    <foreach name="list" item="v" >
+      <option value="<{$v['cid']}>"><{$v['cat_name']}></option>
+    </foreach>
+    
+  </select>
+  <br><br>分类名称
+  <input type="text" name="cat_name" id="name">   [中文_字母_数字 等...]
+  <br><br>
+分类排序
+  <input type="text" name="sort" id="" value="">  [0-999]
+   <br><br>
+   <input type="submit" class="submit" value="添加分类">
+</form>
+</div>
+
