@@ -131,48 +131,34 @@
 
     </div>
     <!-- 内容2开始 -->
-    <div class="layui-tab-item"><form class="layui-form" action="">
-  
-  <div class="layui-form-item">
-     <div class="layui-form-item">
-      <label class="layui-form-label">名称</label>
-      <div class="layui-input-inline">
-        <input type="text" name="username" width:180 lay-verify="required" placeholder="请输入幻灯片名称" autocomplete="off" class="layui-input">
-      </div>
-  </div>
-    <!-- <div class="layui-inline">
-      <label class="layui-form-label">验证邮箱</label>
-      <div class="layui-input-inline">
-        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
-      </div>
-    </div> -->
-  </div>
-  
-  <div class="layui-form-item layui-form-text">
-    <label class="layui-form-label">备注</label>
-    <div class="layui-input-block">
-      <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
-    </div>
-  </div>
-  <!--<div class="layui-form-item layui-form-text">
-    <label class="layui-form-label">编辑器</label>
-    <div class="layui-input-block">
-      <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>
-    </div>
-  </div>-->
-  <div class="layui-form-item">
-    <div class="layui-input-block">
-      <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
-      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-    </div>
-  </div>
-</form>
- 
-<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+    <div class="layui-tab-item">
+
+      <form class="layui-form" action="">
+        <div class="layui-form-item">
+           <div class="layui-form-item">
+            <label class="layui-form-label">名称</label>
+              <div class="layui-input-inline">
+                <input type="text" name="name" lay-verify="required" id="name" placeholder="请输入幻灯片名称" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+        </div>
+        
+        <div class="layui-form-item layui-form-text">
+          <label class="layui-form-label">备注</label>
+          <div class="layui-input-block">
+            <textarea placeholder="请输入内容" class="layui-textarea" name="remark" id="remark"></textarea>
+          </div>
+        </div>
+
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="demo1" id="commit">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+          </div>
+        </div>
+      </form>
 
 </div>
- 
-
     <!-- 内容2结束 -->
   </div>
 </div>
@@ -285,9 +271,29 @@ layui.use(['form', 'layedit', 'laydate'], function(){
     })
     return false;
   });
-  
-  
 });
+</script>
+
+<script>     
+    $(document).ready(function(){       //提交
+        $("#commit").click(function(){
+            $.ajax({
+                type: "get",
+                url: "<?php echo U('Admin/Slide/addHandle');?>",
+                data: "name="+$('#name').val()+"&&remark="+$('#remark').val(),
+                dataType:"json",  
+                success: function(data){
+                  alert(11);
+                    // $.each(data, function(index,val){
+                    //   //console.log(data);
+                    //     // alert( "Item  "+index + " "+ val.id + " : " + val.name );
+                    //     var result = "Item  "+index +' value ="'+ val +"<br>" //+index.code+'">'+index.msg+"<br>";
+                    //     $("#test").append(result);
+                    // });   
+                }           
+              });         
+          });
+        });
 </script>
     </div>
   </div>

@@ -1546,3 +1546,19 @@ SQL: SHOW COLUMNS FROM `z_slide` [ RunTime:0.0530s ]
 SQL: SELECT `id`,`status`,`add_time`,`name`,`remark` FROM `z_slide` LIMIT 0,10   [ RunTime:0.0010s ]
 SQL: SELECT COUNT(id) AS tp_count FROM `z_slide` LIMIT 1   [ RunTime:0.0000s ]
 
+[ 2017-12-18T20:01:09+08:00 ] 127.0.0.1 /index.php/Admin/Slide/getSlideData.html?page=1&limit=10
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `z_slide` [ RunTime:0.0290s ]
+SQL: SELECT `id`,`status`,`add_time`,`name`,`remark` FROM `z_slide` LIMIT 0,10   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(id) AS tp_count FROM `z_slide` LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2017-12-18T20:01:13+08:00 ] 127.0.0.1 /index.php/Admin/Slide/addHandle.html?name=121&&remark=21212
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+

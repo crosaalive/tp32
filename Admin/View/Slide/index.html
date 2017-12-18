@@ -36,32 +36,32 @@
 
     </div>
     <!-- 内容2开始 -->
-    <div class="layui-tab-item"><form class="layui-form" action="">
-  
-  <div class="layui-form-item">
-     <div class="layui-form-item">
-      <label class="layui-form-label">名称</label>
-      <div class="layui-input-inline">
-        <input type="text" name="username" lay-verify="required" placeholder="请输入幻灯片名称" autocomplete="off" class="layui-input">
-      </div>
-  </div>
+    <div class="layui-tab-item">
 
-  </div>
-  
-  <div class="layui-form-item layui-form-text">
-    <label class="layui-form-label">备注</label>
-    <div class="layui-input-block">
-      <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
-    </div>
-  </div>
+      <form class="layui-form" action="">
+        <div class="layui-form-item">
+           <div class="layui-form-item">
+            <label class="layui-form-label">名称</label>
+              <div class="layui-input-inline">
+                <input type="text" name="name" lay-verify="required" id="name" placeholder="请输入幻灯片名称" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+        </div>
+        
+        <div class="layui-form-item layui-form-text">
+          <label class="layui-form-label">备注</label>
+          <div class="layui-input-block">
+            <textarea placeholder="请输入内容" class="layui-textarea" name="remark" id="remark"></textarea>
+          </div>
+        </div>
 
-  <div class="layui-form-item">
-    <div class="layui-input-block">
-      <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
-      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
-    </div>
-  </div>
-</form>
+        <div class="layui-form-item">
+          <div class="layui-input-block">
+            <button class="layui-btn" lay-submit="" lay-filter="demo1" id="commit">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+          </div>
+        </div>
+      </form>
 
 </div>
     <!-- 内容2结束 -->
@@ -150,9 +150,9 @@ layui.use(['form', 'layedit', 'laydate'], function(){
  
   //自定义验证规则
   form.verify({
-    title: function(value){
+    name: function(value){
       if(value.length < 5){
-        return '标题至少得5个字符啊';
+        return '标题至少得2个字符啊';
       }
     }
     ,pass: [/(.+){6,12}$/, '密码必须6到12位']
@@ -162,12 +162,12 @@ layui.use(['form', 'layedit', 'laydate'], function(){
   });
   
   //监听指定开关
-  form.on('switch(switchTest)', function(data){
-    layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
-      offset: '6px'
-    });
-    layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
-  });
+  // form.on('switch(switchTest)', function(data){
+  //   layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+  //     offset: '6px'
+  //   });
+  //   layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+  // });
   
   //监听提交
   form.on('submit(demo1)', function(data){
@@ -180,22 +180,23 @@ layui.use(['form', 'layedit', 'laydate'], function(){
 </script>
 
 <script>     
-    $(document).ready(function(){       //提交
-        $("#tab2").click(function(){
-            $.ajax({
-                type: "get",
-                url: "<{:U('Admin/Slide/addHandle')}>",
-                // data: "value="+$(this).val(),
-                dataType:"json",  
-                success: function(data){
-                    $.each(data, function(index,val){
-                      console.log(data);
-                        // alert( "Item  "+index + " "+ val.id + " : " + val.name );
-                        var result = "Item  "+index +' value ="'+ val +"<br>" //+index.code+'">'+index.msg+"<br>";
-                        $("#test").append(result);
-                    });   
-                }           
-              });         
-          });
-        });
+    // $(document).ready(function(){       //提交
+    //     $("#commit").click(function(){
+    //         $.ajax({
+    //             type: "get",
+    //             url: "<{:U('Admin/Slide/addHandle')}>",
+    //             data: "name="+$('#name').val()+"&&remark="+$('#remark').val(),
+    //             dataType:"json",  
+    //             success: function(data){
+    //               alert(11);
+    //                 // $.each(data, function(index,val){
+    //                 //   //console.log(data);
+    //                 //     // alert( "Item  "+index + " "+ val.id + " : " + val.name );
+    //                 //     var result = "Item  "+index +' value ="'+ val +"<br>" //+index.code+'">'+index.msg+"<br>";
+    //                 //     $("#test").append(result);
+    //                 // });   
+    //             }           
+    //           });         
+    //       });
+    //     });
 </script>
