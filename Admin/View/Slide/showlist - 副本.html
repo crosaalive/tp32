@@ -169,26 +169,26 @@ layui.use('table', function(){
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script>
 // 动态加载数据
-// layui.use('table', function(){
-//   var table = layui.table;
-//   //第一个实例
-//   table.render({
-//     elem: '#demo'
-//     ,height: 480
-//     // ,method: 'get' //方式
-//     ,limit: 10 //
-//     ,url: "<{:U('Admin/Slide/getSlideData')}>" //数据接口
-//     ,page: true //开启分页
-//     ,cols: [[ //表头
-//       {field: 'id', title: 'ID', width:80,}
-//       ,{field: 'status', title: '状态', width:80}
-//       ,{field: 'add_time', title: '添加时间', width:150}
-//       ,{field: 'name', title: '名称', width:80}
-//       ,{field: 'remark', title: '备注', width: 177}
-//     ]]
-//   });
+layui.use('table', function(){
+  var table = layui.table;
+  //第一个实例
+  table.render({
+    elem: '#demo'
+    ,height: 480
+    // ,method: 'get' //方式
+    ,limit: 10 //
+    ,url: "<{:U('Admin/Slide/getSlideData')}>" //数据接口
+    ,page: true //开启分页
+    ,cols: [[ //表头
+      {field: 'id', title: 'ID', width:80,}
+      ,{field: 'status', title: '状态', width:80}
+      ,{field: 'add_time', title: '添加时间', width:150}
+      ,{field: 'name', title: '名称', width:80}
+      ,{field: 'remark', title: '备注', width: 177}
+    ]]
+  });
 
-// });
+});
 </script>
 
 

@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>后台管理系统</title>
   <link rel="stylesheet" href="/Public/layui/css/layui.css">
+  <script src="/Public/layui/layui.all.js"></script>
+  <script src="/Public/js/jquery.min.js"></script>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -92,92 +94,201 @@
     <!-- 内容主体区域 -->
     <div style="padding: 15px;">
       
-              
-<fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-  <legend>幻灯片管理</legend>
-</fieldset>
- 
 <div class="layui-tab">
   <ul class="layui-tab-title">
-    <li class="layui-this" id="tab2">幻灯片列表</li>
+    <li class="layui-this" id="tab2">幻灯片列表管理</li>
     <li >添加幻灯片</li>
-  <!--   <li>权限分配</li>
-    <li>商品管理</li>
-    <li>订单管理</li> -->
   </ul>
   <div class="layui-tab-content">
     <div class="layui-tab-item layui-show">
 
-<!-- 列表开始 -->
-<table id="demo" lay-filter="test"></table>
-
-<p id = "test"></p>
-
-<!-- <script src="/Public/layui/layui.js" charset="utf-8"></script> -->
-
-
-<!-- <script src="http://cdn.staticfile.org/jquery/1.7.1/jquery.min.js"></script> -->
-<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
-<script>     
-    // $(document).ready(function(){       //城市列表
-    //     $("#tab2").click(function(){
-    //         $.ajax({
-    //             type: "get",
-    //             url: "<?php echo U('Admin/Slide/getSlideData');?>",
-    //             // data: "value="+$(this).val(),
-    //             dataType:"json",  
-    //             success: function(data){
-    //                 $.each(data, function(index,val){
-    //                   console.log(data);
-    //                     // alert( "Item  "+index + " "+ val.id + " : " + val.name );
-    //                     var result = "Item  "+index +' value ="'+ val +"<br>" //+index.code+'">'+index.msg+"<br>";
-    //                     $("#test").append(result);
-    //                 });   
-    //             }           
-    //           });         
-    //       });
-    //     });
+<script type="text/html" id="checkboxTpl">
+  <!-- 这里的 checked 的状态只是演示 -->
+  <input type="checkbox" name="lock" value="{{d.id}}" title="启用" lay-filter="lockDemo" {{ d.id == 1 ? 'checked' : '' }}>
 </script>
 
-
-<script>
-layui.use('table', function(){
-  var table = layui.table;
-  //第一个实例
-  table.render({
-    elem: '#demo'
-    ,height: 315
-    ,url:"<?php echo U('Admin/Slide/getSlideData');?>"
-    ,page: true //开启分页
-    ,data: [[
-      {field:'id', width:80, title: 'ID'}
-      ,{field:'status', width:80, title: '启用状态'}
-      ,{field:'add_time', width:80, title: '添加时间'}
-      ,{field:'name', width:130, title: '名称'}
-      ,{field:'remark', title: '备注', width: '30%', minWidth: 100}
-    ]]
- 
-  });
-  
-});
-// alert(data);
+<!-- <button class="layui-btn " id="reload2" >刷新</button> -->
+<table class="layui-table" lay-data="{width:900, height:480, url:'<?php echo U('Admin/Slide/getSlideData');?>',limit:10, page:true, id:'idTest'}" lay-filter="demo">
+  <thead>
+    <tr>
+      <th lay-data="{type:'checkbox', width:40, fixed: 'left'}"></th>
+      <th lay-data="{field:'id', width:60, align:'center', sort: true, fixed: true}">ID</th>
+      <th lay-data="{field:'name', width:130}">名称</th>
+      <th lay-data="{field:'add_time', width:180, align:'center', sort: true}">时间</th>
+      <th lay-data="{field:'remark', width:180}">备注</th>
+      <th lay-data="{field:'status', width:110, align:'center', sort: true, templet: '#checkboxTpl', unresize: true}">启用状态</th>
+      <th lay-data="{fixed: 'right', width:178, align:'center', toolbar: '#barDemo'}">操作</th>
+    </tr>
+  </thead>
+</table>
+<script type="text/html" id="barDemo">
+  <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail" >设置</a>
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
 </script>
 
+<!-- 内容1列表结束 -->
 
-
-<!-- 列表结束 -->
     </div>
-
     <!-- 内容2开始 -->
-    <div class="layui-tab-item">内容2</div>
+    <div class="layui-tab-item"><form class="layui-form" action="">
+  
+  <div class="layui-form-item">
+     <div class="layui-form-item">
+      <label class="layui-form-label">名称</label>
+      <div class="layui-input-inline">
+        <input type="text" name="username" width:180 lay-verify="required" placeholder="请输入幻灯片名称" autocomplete="off" class="layui-input">
+      </div>
+  </div>
+    <!-- <div class="layui-inline">
+      <label class="layui-form-label">验证邮箱</label>
+      <div class="layui-input-inline">
+        <input type="text" name="email" lay-verify="email" autocomplete="off" class="layui-input">
+      </div>
+    </div> -->
+  </div>
+  
+  <div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">备注</label>
+    <div class="layui-input-block">
+      <textarea placeholder="请输入内容" class="layui-textarea"></textarea>
+    </div>
+  </div>
+  <!--<div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">编辑器</label>
+    <div class="layui-input-block">
+      <textarea class="layui-textarea layui-hide" name="content" lay-verify="content" id="LAY_demo_editor"></textarea>
+    </div>
+  </div>-->
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+    </div>
+  </div>
+</form>
+ 
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+
+</div>
+ 
+
     <!-- 内容2结束 -->
   </div>
 </div>
 
-<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script src="/Public/layui/layui.all.js" charset="utf-8"></script>
 <script>
+  layui.use('table', function(){
+  var table = layui.table;
+  var form = layui.form;
+  //监听表格复选框选择
+  table.on('checkbox(demo)', function(obj){
+    console.log(obj)
+  });
+  //监听工具条
+  table.on('tool(demo)', function(obj){
+    var data = obj.data;
+    if(obj.event === 'detail'){
+      window.location.href="<?php echo U('Admin/Slide/showSlideList');?>"+"?id="+data.id; 
+      //layer.msg('ID：'+ data.id + ' 的查看操作');
+    } else if(obj.event === 'del'){
+      layer.confirm('真的删除行么', function(index){
+        obj.del();
+        layer.close(index);
+      });
+    } else if(obj.event === 'edit'){
+      layer.alert('编辑行：<br>'+ JSON.stringify(data))
+    }
+  });
+  
+  var $ = layui.$, active = {
+    getCheckData: function(){ //获取选中数据
+      var checkStatus = table.checkStatus('idTest')
+      ,data = checkStatus.data;
+      layer.alert(JSON.stringify(data));
+    }
+    ,getCheckLength: function(){ //获取选中数目
+      var checkStatus = table.checkStatus('idTest')
+      ,data = checkStatus.data;
+      layer.msg('选中了：'+ data.length + ' 个');
+    }
+    ,isAll: function(){ //验证是否全选
+      var checkStatus = table.checkStatus('idTest');
+      layer.msg(checkStatus.isAll ? '全选': '未全选')
+    }
+  };
+  
+  $('.demoTable .layui-btn').on('click', function(){
+    var type = $(this).data('type');
+    active[type] ? active[type].call(this) : '';
+  });
+});
+
+//监听锁定操作
+  form.on('checkbox(lockDemo)', function(obj){
+    layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
+  });
+
+// $("#reload2").click(function(){
+//   var tableObj = table.render({});
+//   tableObj.reload(); //重载表格
+//   // alert(111);
+// })
 </script>
 
+
+<!-- 内容2js -->
+<script>
+layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+  
+  //日期
+  laydate.render({
+    elem: '#date'
+  });
+  laydate.render({
+    elem: '#date1'
+  });
+  
+  //创建一个编辑器
+  var editIndex = layedit.build('LAY_demo_editor');
+ 
+  //自定义验证规则
+  form.verify({
+    title: function(value){
+      if(value.length < 5){
+        return '标题至少得5个字符啊';
+      }
+    }
+    ,pass: [/(.+){6,12}$/, '密码必须6到12位']
+    ,content: function(value){
+      layedit.sync(editIndex);
+    }
+  });
+  
+  //监听指定开关
+  form.on('switch(switchTest)', function(data){
+    layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+      offset: '6px'
+    });
+    layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+  });
+  
+  //监听提交
+  form.on('submit(demo1)', function(data){
+    layer.alert(JSON.stringify(data.field), {
+      title: '最终的提交信息'
+    })
+    return false;
+  });
+  
+  
+});
+</script>
     </div>
   </div>
   
@@ -186,7 +297,7 @@ layui.use('table', function(){
    - 底部固定区域
   </div>
 </div>
-<script src="/Public/layui/layui.all.js"></script>
+
 <script>
 //JavaScript代码区域
 layui.use('element', function(){

@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>后台管理系统</title>
-  <link rel="stylesheet" href="__LAYUI__/css/layui.css">
-  <script src="__LAYUI__/layui.all.js"></script>
-  <script src="__JQ__/jquery.min.js"></script>
+  <link rel="stylesheet" href="/Public/layui/css/layui.css">
+  <script src="/Public/layui/layui.all.js"></script>
+  <script src="/Public/js/jquery.min.js"></script>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -54,10 +54,10 @@
           <a class="" href="javascript:;">内容管理</a>
           <dl class="layui-nav-child">
             <dd><a href="">导航菜单</a></dd>
-            <!-- <{:U('Admin/Category/formHandle')}> -->
-            <!-- <dd><a href="__URL__/Slide/index">幻灯片</a></dd> -->
-            <dd><a href="<{:U('Admin/Slide/index')}>">幻灯片</a></dd>
-            <dd><a href="<{:U('Admin/Slide/showList')}>">幻灯片</a></dd>
+            <!-- <?php echo U('Admin/Category/formHandle');?> -->
+            <!-- <dd><a href="/index.php/Admin/Slide/Slide/index">幻灯片</a></dd> -->
+            <dd><a href="<?php echo U('Admin/Slide/index');?>">幻灯片</a></dd>
+            <dd><a href="<?php echo U('Admin/Slide/showList');?>">幻灯片</a></dd>
             <dd><a href="javascript:;">分类管理</a></dd>
             <dd><a href="javascript:;">文章管理</a></dd>
             <dd><a href="">SEO设置</a></dd>
@@ -93,7 +93,53 @@
   <div class="layui-body">
     <!-- 内容主体区域 -->
     <div style="padding: 15px;">
-      {__CONTENT__}
+      
+<div class="layui-tab">
+  <ul class="layui-tab-title">
+    <li class="layui-this">网站设置</li>
+    <li>用户管理</li>
+  </ul>
+  <div class="layui-tab-content">
+    <div class="layui-tab-item layui-show">
+      1. 高度默认自适应，也可以随意固宽。
+      <br>2. Tab进行了响应式处理，所以无需担心数量多少。
+    </div>
+    <div class="layui-tab-item">内容2</div>
+  </div>
+</div>
+           
+          
+<script src="//res.layui.com/layui/dist/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+layui.use('element', function(){
+  var $ = layui.jquery
+  ,element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+  
+  //触发事件
+  var active = {
+    ,tabChange: function(){
+      //切换到指定Tab项
+      element.tabChange('demo', '22'); //切换到：用户管理
+    }
+  };
+  
+  $('.site-demo-active').on('click', function(){
+    var othis = $(this), type = othis.data('type');
+    active[type] ? active[type].call(this, othis) : '';
+  });
+  
+  //Hash地址的定位
+  var layid = location.hash.replace(/^#test=/, '');
+  element.tabChange('test', layid);
+  
+  element.on('tab(test)', function(elem){
+    location.hash = 'test='+ $(this).attr('lay-id');
+  });
+  
+});
+</script>
+
     </div>
   </div>
   

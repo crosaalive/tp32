@@ -31,5 +31,6 @@ return array(
 	//模板字符串解析
 	'TMPL_PARSE_STRING'  =>array(
      '__LAYUI__' => __ROOT__.'/Public/layui', // 增加layui路径规则
+     '__JQ__' => __ROOT__.'/Public/js', // 增加layui路径规则
 )
 );
